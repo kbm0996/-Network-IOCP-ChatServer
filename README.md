@@ -12,9 +12,12 @@
   
   **figure 2. Systemlink*
   
-### DB 테이블
-
-#### Account Table
+### DB
++ Account 테이블
+각 계정의 고유번호, id, password, 닉네임
+| accountno | userid | userpass | usernick |
+|:---:|:---:|:---:|:---:|
+|BIGINT|CHAR(64)|CHAR(64)|CHAR(64)|
 ```sql
 CREATE TABLE `accountdb`.`account` (
 	`accountno` BIGINT NOT NULL AUTO_INCREMENT,
@@ -26,6 +29,9 @@ CREATE TABLE `accountdb`.`account` (
 );
 ```
 
+| accountno | sessionkey |
+|:---:|:---:|
+|BIGINT|CHAR(64)|
 ```sql
 CREATE TABLE `accountdb`.`sessionkey` (
 	`accountno` BIGINT NOT NULL,
@@ -34,6 +40,9 @@ CREATE TABLE `accountdb`.`sessionkey` (
 );
 ```
 
+| accountno | status |
+|:---:|:---:|
+|BIGINT|INT|
 ```sql
 CREATE TABLE `accountdb`.`status` (
 	`accountno` BIGINT NOT NULL,
@@ -42,6 +51,9 @@ CREATE TABLE `accountdb`.`status` (
 );
 ```
 
+| accountno | whiteip |
+|:---:|:---:|
+|BIGINT|CHAR(32)|
 ```sql
 CREATE TABLE `accountdb`.`whiteip` (
 	`no` BIGINT NOT NULL AUTO_INCREMENT,
@@ -49,66 +61,6 @@ CREATE TABLE `accountdb`.`whiteip` (
     PRIMARY KEY (`no`)
 );
 ```
-
-#### Server Monitoring Table
-
-```sql
-CREATE TABLE `status_server`.`hardware` (
-	`no` BIGINT NOT NULL AUTO_INCREMENT,
-	`date` datetime NOT NULL,
-	`CPUUsage` BIGINT NOT NULL,
-	`AvailableMBytes` BIGINT NOT NULL,
-	`NonPagedBytes` BIGINT NOT NULL,
-	PRIMARY KEY (`no`),
-	INDEX `date_INDEX` (`date` ASC)
-);
-```
-
-```sql
-CREATE TABLE `status_server`.`battle` (
-	`no` BIGINT NOT NULL AUTO_INCREMENT,
-	`date` datetime NOT NULL,
-	`CPUUsage` BIGINT NOT NULL,
-	`CommitMemory` BIGINT NOT NULL,
-	`PacketPool` BIGINT NOT NULL,
-	`AuthFPS` BIGINT NOT NULL,
-	`GameFPS` BIGINT NOT NULL,
-	`SessionAll` BIGINT NOT NULL,
-	`SessionAuth` BIGINT NOT NULL,
-	`SessionGame` BIGINT NOT NULL,
-	PRIMARY KEY (`no`),
-	INDEX `date_INDEX` (`date` ASC)
-);
-```
-
-```sql
-CREATE TABLE `status_server`.`chat` (
-	`no` BIGINT NOT NULL AUTO_INCREMENT,
-	`date` datetime NOT NULL,
-	`CPUUsage` BIGINT NOT NULL,
-	`CommitMemory` BIGINT NOT NULL,
-	`PacketPool` BIGINT NOT NULL,
-	`SessionAll` BIGINT NOT NULL,
-	`SessionLogin` BIGINT NOT NULL,
-	PRIMARY KEY (`no`),
-	INDEX `date_INDEX` (`date` ASC)
-);
-```
-
-```sql
-CREATE TABLE `status_server`.`login` (
-	`no` BIGINT NOT NULL AUTO_INCREMENT,
-	`date` datetime NOT NULL,
-	`CPUUsage` BIGINT NOT NULL,
-	`CommitMemory` BIGINT NOT NULL,
-	`PacketPool` BIGINT NOT NULL,
-	`SessionAll` BIGINT NOT NULL,
-	`LoginSuccessTPS` BIGINT NOT NULL,
-	PRIMARY KEY (`no`),
-	INDEX `date_INDEX` (`date` ASC)
-);
-```
-
 
 ### 서버 화면
 
