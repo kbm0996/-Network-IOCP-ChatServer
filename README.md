@@ -14,7 +14,9 @@
   
 ### DB
 + Account 테이블
+
 각 계정의 고유번호, id, password, 닉네임
+
 | accountno | userid | userpass | usernick |
 |:---:|:---:|:---:|:---:|
 |BIGINT|CHAR(64)|CHAR(64)|CHAR(64)|
