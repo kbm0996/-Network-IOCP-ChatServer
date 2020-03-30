@@ -31,6 +31,10 @@ CREATE TABLE `accountdb`.`account` (
 );
 ```
 
++ sessionkey 테이블
+
+로그인 요청을 받을때 정상적인 요청인지 확인하기 위한 세션키
+
 | accountno | sessionkey |
 |:---:|:---:|
 |BIGINT|CHAR(64)|
@@ -39,28 +43,6 @@ CREATE TABLE `accountdb`.`sessionkey` (
 	`accountno` BIGINT NOT NULL,
 	`sessionkey` CHAR(64) NULL,
     PRIMARY KEY (`accountno`)
-);
-```
-
-| accountno | status |
-|:---:|:---:|
-|BIGINT|INT|
-```sql
-CREATE TABLE `accountdb`.`status` (
-	`accountno` BIGINT NOT NULL,
-	`status` INT NOT NULL DEFAULT 0,
-	PRIMARY KEY (`accountno`)
-);
-```
-
-| accountno | whiteip |
-|:---:|:---:|
-|BIGINT|CHAR(32)|
-```sql
-CREATE TABLE `accountdb`.`whiteip` (
-	`no` BIGINT NOT NULL AUTO_INCREMENT,
-	`ip` CHAR(32) NOT NULL,
-    PRIMARY KEY (`no`)
 );
 ```
 
