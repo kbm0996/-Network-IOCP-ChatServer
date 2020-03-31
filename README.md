@@ -3,7 +3,7 @@
  IOCP(입출력 완료 포트; I/O completion port) 에코 서버-인증 서버 연동, 더미 클라이언트
 
 ## 📌 구성
-### 서버 구조
+### 서버 통신 순서
   ![capture](https://user-images.githubusercontent.com/18212066/77258063-84262d00-6cbb-11ea-840f-dfbfbc23be70.png)
   
   **figure 1. Non-systemlink*
@@ -12,7 +12,7 @@
   
   **figure 2. Systemlink*
   
-### DB
+### DB 정보
 + Account 테이블
 
 각 계정의 고유번호, id, password, 닉네임
@@ -43,6 +43,36 @@ CREATE TABLE `accountdb`.`sessionkey` (
 	`accountno` BIGINT NOT NULL,
 	`sessionkey` CHAR(64) NULL,
     PRIMARY KEY (`accountno`)
+);
+```
+
++ status 테이블
+
+로그인 요청을 받을때 정상적인 요청인지 확인하기 위한 세션키
+
+| accountno | status |
+|:---:|:---:|
+|BIGINT|INT|
+```sql
+CREATE TABLE `accountdb`.`status` (
+	`accountno` BIGINT NOT NULL,
+	`status` INT NOT NULL DEFAULT 0,
+	PRIMARY KEY (`accountno`)
+);
+```
+
++ whiteip 테이블
+
+로그인 요청을 받을때 정상적인 요청인지 확인하기 위한 세션키
+
+| accountno | whiteip |
+|:---:|:---:|
+|BIGINT|CHAR(32)|
+```sql
+CREATE TABLE `accountdb`.`whiteip` (
+	`no` BIGINT NOT NULL AUTO_INCREMENT,
+	`ip` CHAR(32) NOT NULL,
+    PRIMARY KEY (`no`)
 );
 ```
 
