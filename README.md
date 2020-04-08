@@ -57,12 +57,4 @@ CREATE TABLE `accountdb`.`sessionkey` (
   **figure 4. GameServer(MainServer)*
 
 
-## 📌 동작 원리
-
-### 생성과 파괴
-
- IOCP는 비동기 입출력 결과와 이 결과를 처리할 스레드에 관한 정보를 담고 있는 구조
- 
-  ![capture](https://github.com/kbm0996/-Network-IOCP-EchoServerClient/blob/master/figure/3.png)
-  
-  **figure 1. CPP+DB(MySQL)*
+## 📌 [프로토콜](https://github.com/kbm0996/-Network-IOCP-ChatServer/blob/master/2_ChatServer/ChatServer/ChatServer/CommonProtocol.h)
